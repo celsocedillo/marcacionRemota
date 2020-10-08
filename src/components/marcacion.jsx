@@ -6,6 +6,7 @@ class Marcacion extends React.Component {
 
     servidorAPI = "http://192.198.10.241:3010/rrhh";
 
+
     formRef = React.createRef();
 
     constructor(props) {
@@ -15,10 +16,11 @@ class Marcacion extends React.Component {
         alertMessage: "", 
         alertType: "",
         empleado: "",
-        radOperacion: "E",
+        radOperacion: "",
         showButton: true,
         loadingButton: false,
-    }
+      }
+      
     }
 
     grabaMarcacion = async (id) => {
@@ -91,7 +93,7 @@ class Marcacion extends React.Component {
         </Row>
         <Row>
             <Col span={12} offset={6} style={{textAlign:"center"}}>
-            <Radio.Group defaultValue="E" buttonStyle="solid" name="radOperacion" onChange={this.handleInputChange}>
+            <Radio.Group buttonStyle="solid" name="radOperacion" onChange={this.handleInputChange}>
             <Radio.Button value="E">Entrada</Radio.Button>
             <Radio.Button value="S">Salida</Radio.Button>
             </Radio.Group>
@@ -107,7 +109,7 @@ class Marcacion extends React.Component {
              </Col>
              <Col span={8} style={{textAlign:"center"}}>
                  
-             <Input style={{width:"100px", textAlign:"center"}} maxLength="5" name="txtNumero" onChange={this.handleInputChange} />
+             <Input style={{width:"100px", textAlign:"center"}} maxLength="5" name="txtNumero" onChange={this.handleInputChange} disabled={!this.state.radOperacion} />
              </Col>
              <Col span={8}>
              </Col>
