@@ -2,11 +2,13 @@ import React, { Component, Fragment } from "react";
 import { Card, Row, Col, Input, Button, Alert, Radio, InputNumber } from 'antd'
 import { DashboardOutlined} from "@ant-design/icons"
 
+require('dotenv').config();
+
 class Marcacion extends React.Component {
 
-    servidorAPI = "http://192.198.10.241:3010/rrhh";
-
-
+    //servidorAPI = "http://192.198.10.241:3010/rrhh";
+    servidorAPI = process.env.REACT_APP_API_URL;
+    
     formRef = React.createRef();
 
     constructor(props) {
@@ -20,6 +22,7 @@ class Marcacion extends React.Component {
         showButton: true,
         loadingButton: false,
       }
+      console.log("servidor", this.servidorAPI);
       
     }
 
@@ -118,7 +121,7 @@ class Marcacion extends React.Component {
             <Row>
             <Col span={24}>
                 <p></p>
-            <Button type="primary" block disabled={this.state.txtNumero?.length < 4} onClick={this.onsubmit} loading={loadingButton} >Registrar marcación</Button>
+            <Button type="primary" block disabled={this.state.txtNumero?.length < 5} onClick={this.onsubmit} loading={loadingButton} >Registrar marcación</Button>
             </Col>
             </Row>
          }
