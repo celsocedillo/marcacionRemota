@@ -68,9 +68,7 @@ class Marcacion extends React.Component {
                                     this.grabaMarcacion(resultado[0].CODIGO);
                                 }
                                 else{
-                                    
-                                    this.setState({showAlert: true, loadingButton: false, alertMessage:"Empleado no existe o no esta habilitado", alertType: "warning"})
-                                    
+                                    this.setState({showAlert: true, loadingButton: false, alertMessage:"Empleado no existe o no está habilitado para marcación remota", alertType: "warning"})
                                 }
                                 
                               }else if (response.status >= 400 && response.status < 500){
